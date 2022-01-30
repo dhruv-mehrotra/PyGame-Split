@@ -137,14 +137,14 @@ class Dino():
 	def draw(self, win):
 		win.blit(self.image, self.rect)
 
-class Cactus(pygame.sprite.Sprite):
+class Obstacle(pygame.sprite.Sprite):
 	def __init__(self, type):
-		super(Cactus, self).__init__()
+		super(Obstacle, self).__init__()
 
 		self.image_list = []
 		for i in range(5):
-			scale = 0.65
-			img = pygame.image.load(f'Assets/Cactus/{i+1}.png')
+			scale = 0.25
+			img = pygame.image.load(f'Assets/Obstacle/{i+1}.png')
 			w, h = img.get_size()
 			img = pygame.transform.scale(img, (int(w*scale), int(h*scale)))
 			self.image_list.append(img)
@@ -165,14 +165,14 @@ class Cactus(pygame.sprite.Sprite):
 	def draw(self, win):
 		win.blit(self.image, self.rect)
 
-class Ptera(pygame.sprite.Sprite):
+class Flying_Obstacle(pygame.sprite.Sprite):
 	def __init__(self, x, y):
-		super(Ptera, self).__init__()
+		super(Flying_Obstacle, self).__init__()
 
 		self.image_list = []
 		for i in range(2):
-			scale = 0.65
-			img = pygame.image.load(f'Assets/Ptera/{i+1}.png')
+			scale = 0.05
+			img = pygame.image.load(f'Assets/Flying Obstacle/{i+1}.png')
 			w, h = img.get_size()
 			img = pygame.transform.scale(img, (int(w*scale), int(h*scale)))
 			self.image_list.append(img)

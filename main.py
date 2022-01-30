@@ -1,6 +1,6 @@
 import random, pygame
 
-from classes import Ground, Dino, Cactus, Cloud, Ptera, Star, ReverseGround
+from classes import Ground, Dino, Obstacle, Cloud, Flying_Obstacle, Star, ReverseGround
 
 pygame.init()
 pygame.display.set_caption('Split?')
@@ -11,12 +11,15 @@ clock = pygame.time.Clock()
 FPS = 60
 
 # COLORS
-
+ 
 WHITE = (225,225,225)
 BLACK = (0, 0, 0)
 GRAY = (32, 33, 36)
 
 # IMAGES
+
+bg_image = pygame.image.load('Assets/background.png')
+bg_image = pygame.transform.scale(bg_image,(1200,400))
 
 start_img = pygame.image.load('Assets/start_img.png')
 start_img = pygame.transform.scale(start_img, (60, 64))
@@ -95,7 +98,7 @@ def reset():
 running = True
 while running:
 	jump = False
-	win.fill(GRAY)
+	win.blit(bg_image,(0,0))
 
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
@@ -146,11 +149,11 @@ while running:
 			if counter % int(enemy_time) == 0:
 				if random.randint(1, 10) == 5:
 					y = random.choice([285, 330])
-					ptera = Ptera(WIDTH, y)
+					ptera = Flying_Obstacle(WIDTH, y)
 					ptera_group.add(ptera)
 				else:
 					type = random.randint(1, 4)
-					cactus = Cactus(type)
+					cactus = Obstacle(type)
 					cactus_group.add(cactus)
 
 			if counter % cloud_time == 0:
