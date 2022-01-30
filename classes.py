@@ -86,11 +86,29 @@ class Dino():
 
 		self.alive = True
 		self.counter = 0
+		self.reverse = False
 
+	def updateImage(self, reverse):
+		self.run_list = []
+		for i in range(1, 4):
+			img = pygame.image.load(f'Assets/Dino/{i}.png')
+			if reverse:
+				img = pygame.transform.flip(img, False, True)
+			img = pygame.transform.scale(img, (52, 58))
+			self.run_list.append(img)
+	
 	def update(self, jump, duck, reverse):
 		if self.alive:
 			if reverse:
-				self.rect.y = 150
+				self.counter += 1
+				if self.counter >= 4:
+					self.index = (self.index + 1) % len(self.run_list)
+					self.image = self.run_list[self.index]
+					self.rect = self.image.get_rect()
+					self.rect.x = self.x
+					self.rect.bottom = 100
+					self.counter = 0
+				
 			else:	
 				if not self.isJumping and jump:
 					self.vel = -self.jumpHeight
