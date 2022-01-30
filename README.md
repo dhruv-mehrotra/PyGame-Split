@@ -11,4 +11,4 @@ RIGHT-SHIFT key :- Reverse the gravity
 
 ## Objective:-
 
-The objective of the game to survive as long as one can and increase the score.
+The objective of the game to survive as long as one can and increase the score, while if u reverse the gravity th score decreases.
