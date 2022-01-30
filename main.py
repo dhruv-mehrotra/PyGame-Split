@@ -125,7 +125,8 @@ while running:
 				duck = True
 
 			if event.key == pygame.K_RSHIFT:
-				reverse = not reverse	
+				reverse = not reverse
+				dino.updateImage(reverse)
 
 
 		if event.type == pygame.KEYUP:
