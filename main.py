@@ -1,6 +1,6 @@
 import random, pygame
 
-from classes import Ground, Dino, Obstacle, Cloud, Flying_Obstacle, Star, ReverseGround
+from classes import Ground, Dino, Obstacle, Flying_Obstacle, ReverseGround
 
 pygame.init()
 pygame.display.set_caption('Split?')
@@ -157,17 +157,6 @@ while running:
 					cactus = Obstacle(type)
 					cactus_group.add(cactus)
 
-			if counter % cloud_time == 0:
-				y = random.randint(40, 100)
-				cloud = Cloud(WIDTH, y)
-				cloud_group.add(cloud)
-
-			if counter % stars_time == 0:
-				type = random.randint(1, 3)
-				y = random.randint(40, 100)
-				star = Star(WIDTH, y, type)
-				stars_group.add(star)
-
 			if counter % 100 == 0:
 				SPEED += 0.1
 				enemy_time -= 0.5
@@ -220,6 +209,9 @@ while running:
 			string_score = f'{high_score}'.zfill(5)
 			for i, num in enumerate(string_score):
 				win.blit(numbers_img, (455+11*i, 10), (10*int(num), 0, 10, 12))
+
+		if score<0:
+			dino.alive = False
 
 		if not dino.alive:
 			win.blit(game_over_img, (WIDTH//2-100, 55))
